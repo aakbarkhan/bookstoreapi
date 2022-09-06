@@ -5,6 +5,11 @@ class BooksController < ApplicationController
         render json: @books
     end
 
+    def show
+        @book = Book.find(params[:id])
+        render json: @book
+    end
+
     def new
         @book = Book.new
     end
@@ -16,6 +21,11 @@ class BooksController < ApplicationController
         else
             render :new
         end
+    end
+
+    def destroy
+        @book = Book.find(params[:id])
+        @book.destroy
     end
 
     private
